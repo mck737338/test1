@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>D-Day 계산기 | 김민찬 Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ===== 좌측 고정 탭 네비게이션 (데스크탑) ===== -->
+  <nav class="side-nav" aria-label="페이지 네비게이션">
+    <div class="side-nav__brand">김민찬</div>
+    <ul class="side-nav__list">
+      <li><a href="index.html"     class="nav-item"><span class="nav-item__dot"></span><span class="nav-item__label">Home</span></a></li>
+      <li><a href="about.html"     class="nav-item"><span class="nav-item__dot"></span><span class="nav-item__label">About</span></a></li>
+      <li><a href="portfolio.html" class="nav-item"><span class="nav-item__dot"></span><span class="nav-item__label">Portfolio</span></a></li>
+      <li><a href="contact.html"   class="nav-item"><span class="nav-item__dot"></span><span class="nav-item__label">Contact</span></a></li>
+    </ul>
+    <div class="side-nav__foot"><small>&copy; <span class="year"></span></small></div>
+  </nav>
+
+  <!-- ===== 모바일 상단 고정 탭 바 ===== -->
+  <nav class="top-nav" aria-label="페이지 네비게이션 (모바일)">
+    <div class="top-nav__brand">김민찬</div>
+    <ul class="top-nav__list">
+      <li><a href="index.html"     class="top-nav__item">Home</a></li>
+      <li><a href="about.html"     class="top-nav__item">About</a></li>
+      <li><a href="portfolio.html" class="top-nav__item">Portfolio</a></li>
+      <li><a href="contact.html"   class="top-nav__item">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- ===== 본문 ===== -->
+  <main class="content">
+    <div class="container">
+
+      <header class="page-head reveal">
+        <span class="page-head__num">실습 1</span>
+        <h1 class="page-head__title">D-Day 계산기</h1>
+      </header>
+
+      <!-- ===== 모든 페이지 공통 프로필 ===== -->
+      <header class="profile reveal">
+        <p class="profile__name"><span>김민찬</span></p>
+        <p class="profile__sub">로봇학부 26학번 김민찬입니다. 잘부탁드립니다.</p>
+        <ul class="profile__meta">
+          <li><b>학과</b>로봇학부</li>
+          <li><b>학번</b>2026406034</li>
+          <li><b>관심 분야</b>제어학</li>
+          <li><b>기술 스택</b>C, C++</li>
+        </ul>
+      </header>
+
+      <p class="lead reveal" data-delay="1">
+        Date 객체로 오늘과 목표 날짜의 차이를 계산합니다.
+      </p>
+
+      <section class="block js-output">
+        <h2 class="block__title">Date 객체 활용: D-Day 계산기</h2>
+
+        <script>
+          // 1. 오늘 날짜 객체 생성
+          let now = new Date();
+
+          // 2. prompt()를 3번 사용하여 "연도", "월", "일"을 문자열로 입력받기
+          let yearStr  = prompt("목표 연도를 입력하세요 (예: 2026)", "2026");
+          let monthStr = prompt("목표 월을 입력하세요 (1~12)", "12");
+          let dayStr   = prompt("목표 일을 입력하세요 (1~31)", "25");
+
+          // 3. 값이 비어있거나 취소(null)한 경우
+          if (!yearStr || !monthStr || !dayStr) {
+            document.write("<h3>계산을 취소했습니다.</h3>");
+          } else {
+            // 4. parseInt()로 문자열을 숫자형으로 변환
+            let year  = parseInt(yearStr);
+            let month = parseInt(monthStr);
+            let day   = parseInt(dayStr);
+
+            // 5. 목표 날짜 객체 생성 (month는 0부터 시작하므로 1을 빼줌, 0=1월 11=12월)
+            let targetDate = new Date(year, month - 1, day);
+
+            // 6. 두 날짜의 getTime() 차이 (밀리초 단위)
+            let diffMs = targetDate.getTime() - now.getTime();
+
+            // 7. 밀리초를 날짜(day) 단위로 변환하고 Math.ceil()로 올림
+            let diffDay = Math.ceil(diffMs / (1000 * 60 * 60 * 24));
+
+            // 8. diffDay 값에 따라 결과 출력 (음수는 Math.abs()로 절댓값 처리)
+            document.write("<h3>목표 날짜: " + targetDate.toLocaleDateString() + "</h3>");
+
+            if (diffDay === 0) {
+              document.write("<h1>D-Day 입니다!</h1>");
+            } else if (diffDay > 0) {
+              document.write("<h1>D-" + diffDay + "</h1>");
+              document.write("<h3>" + diffDay + "일 남았습니다.</h3>");
+            } else {
+              document.write("<h1>D+" + Math.abs(diffDay) + "</h1>");
+              document.write("<h3>" + Math.abs(diffDay) + "일 지났습니다.</h3>");
+            }
+
+            document.write("<hr>");
+            document.write("<p>오늘 날짜: " + now.toLocaleString() + "</p>");
+            document.write("<p><i>새로고침(F5)을 눌러 다시 계산할 수 있습니다.</i></p>");
+          }
+        </script>
+
+      </section>
+
+      <div class="btn-group" style="margin-top: 36px;">
+        <a href="portfolio.html" class="btn btn--ghost">← Portfolio로 돌아가기</a>
+      </div>
+
+    </div>
+
+    <footer class="footer">
+      <small>&copy; <span class="year"></span> 김민찬</small>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

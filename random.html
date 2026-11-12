@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>랜덤 뽑기 | 김민찬 Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ===== 좌측 고정 탭 네비게이션 (데스크탑) ===== -->
+  <nav class="side-nav" aria-label="페이지 네비게이션">
+    <div class="side-nav__brand">김민찬</div>
+    <ul class="side-nav__list">
+      <li><a href="index.html"     class="nav-item"><span class="nav-item__dot"></span><span class="nav-item__label">Home</span></a></li>
+      <li><a href="about.html"     class="nav-item"><span class="nav-item__dot"></span><span class="nav-item__label">About</span></a></li>
+      <li><a href="portfolio.html" class="nav-item"><span class="nav-item__dot"></span><span class="nav-item__label">Portfolio</span></a></li>
+      <li><a href="contact.html"   class="nav-item"><span class="nav-item__dot"></span><span class="nav-item__label">Contact</span></a></li>
+    </ul>
+    <div class="side-nav__foot"><small>&copy; <span class="year"></span></small></div>
+  </nav>
+
+  <!-- ===== 모바일 상단 고정 탭 바 ===== -->
+  <nav class="top-nav" aria-label="페이지 네비게이션 (모바일)">
+    <div class="top-nav__brand">김민찬</div>
+    <ul class="top-nav__list">
+      <li><a href="index.html"     class="top-nav__item">Home</a></li>
+      <li><a href="about.html"     class="top-nav__item">About</a></li>
+      <li><a href="portfolio.html" class="top-nav__item">Portfolio</a></li>
+      <li><a href="contact.html"   class="top-nav__item">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- ===== 본문 ===== -->
+  <main class="content">
+    <div class="container">
+
+      <header class="page-head reveal">
+        <span class="page-head__num">실습 2</span>
+        <h1 class="page-head__title">랜덤 뽑기</h1>
+      </header>
+
+      <!-- ===== 모든 페이지 공통 프로필 ===== -->
+      <header class="profile reveal">
+        <p class="profile__name"><span>김민찬</span></p>
+        <p class="profile__sub">로봇학부 26학번 김민찬입니다. 잘부탁드립니다.</p>
+        <ul class="profile__meta">
+          <li><b>학과</b>로봇학부</li>
+          <li><b>학번</b>2026406034</li>
+          <li><b>관심 분야</b>제어학</li>
+          <li><b>기술 스택</b>C, C++</li>
+        </ul>
+      </header>
+
+      <p class="lead reveal" data-delay="1">
+        콤마로 구분한 항목 중 하나를 무작위로 골라 줍니다.
+      </p>
+
+      <section class="block js-output">
+        <h2 class="block__title">String + Array + Math 조합: 내맘대로 뽑기</h2>
+
+        <script>
+          // 1. String: prompt()로 콤마(,)로 구분된 항목을 입력받기
+          let defaultList = "짜장면,짬뽕,제육볶음,돈까스,순대국,김치찌개,햄버거,초밥,파스타,떡볶이,마라탕";
+          let inputString = prompt("항목을 콤마(,)로 구분하여 입력하세요", defaultList);
+
+          // 2. 값이 비어있거나 취소(null)한 경우
+          if (!inputString) {
+            document.write("<h3>뽑기를 취소했습니다.</h3>");
+          } else {
+            // 3. Array: String.split(',')로 문자열을 배열로 변환
+            let items = inputString.split(',');
+
+            // 4. Math: Math.random()에 배열 길이를 곱하고 Math.floor()로 내림
+            //    → 0 부터 (배열 길이 - 1) 사이의 정수 인덱스
+            let index = Math.floor(Math.random() * items.length);
+
+            // 5. index번째 항목을 choice에 저장하고 trim()으로 양쪽 공백 제거
+            let choice = items[index];
+            choice = choice.trim();
+
+            // 6. 결과 출력
+            document.write("<h3>입력한 항목 (총 " + items.length + "개)</h3>");
+            document.write("<p>" + inputString + "</p>");
+            document.write("<hr>");
+            document.write("<h3>당신의 선택은...</h3>");
+            document.write("<h1>" + choice + " !</h1>");
+            document.write("<p><i>새로고침(F5)을 눌러 다시 뽑을 수 있습니다.</i></p>");
+          }
+        </script>
+
+      </section>
+
+      <div class="btn-group" style="margin-top: 36px;">
+        <a href="portfolio.html" class="btn btn--ghost">← Portfolio로 돌아가기</a>
+      </div>
+
+    </div>
+
+    <footer class="footer">
+      <small>&copy; <span class="year"></span> 김민찬</small>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

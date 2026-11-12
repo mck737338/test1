@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About | 김민찬 Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ===== 좌측 고정 탭 네비게이션 (데스크탑) ===== -->
+  <nav class="side-nav" aria-label="페이지 네비게이션">
+    <div class="side-nav__brand">김민찬</div>
+    <ul class="side-nav__list">
+      <li><a href="index.html"     class="nav-item"><span class="nav-item__dot"></span><span class="nav-item__label">Home</span></a></li>
+      <li><a href="about.html"     class="nav-item"><span class="nav-item__dot"></span><span class="nav-item__label">About</span></a></li>
+      <li><a href="portfolio.html" class="nav-item"><span class="nav-item__dot"></span><span class="nav-item__label">Portfolio</span></a></li>
+      <li><a href="contact.html"   class="nav-item"><span class="nav-item__dot"></span><span class="nav-item__label">Contact</span></a></li>
+    </ul>
+    <div class="side-nav__foot"><small>&copy; <span class="year"></span></small></div>
+  </nav>
+
+  <!-- ===== 모바일 상단 고정 탭 바 ===== -->
+  <nav class="top-nav" aria-label="페이지 네비게이션 (모바일)">
+    <div class="top-nav__brand">김민찬</div>
+    <ul class="top-nav__list">
+      <li><a href="index.html"     class="top-nav__item">Home</a></li>
+      <li><a href="about.html"     class="top-nav__item">About</a></li>
+      <li><a href="portfolio.html" class="top-nav__item">Portfolio</a></li>
+      <li><a href="contact.html"   class="top-nav__item">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- ===== 본문 ===== -->
+  <main class="content">
+    <div class="container">
+
+      <header class="page-head reveal">
+        <span class="page-head__num">01</span>
+        <h1 class="page-head__title">About</h1>
+      </header>
+
+      <!-- ===== 모든 페이지 공통 프로필 ===== -->
+      <header class="profile reveal">
+        <p class="profile__name"><span>김민찬</span></p>
+        <p class="profile__sub">로봇학부 26학번 김민찬입니다. 잘부탁드립니다.</p>
+        <ul class="profile__meta">
+          <li><b>학과</b>로봇학부</li>
+          <li><b>학번</b>2026406034</li>
+          <li><b>관심 분야</b>제어학</li>
+          <li><b>기술 스택</b>C, C++</li>
+        </ul>
+      </header>
+
+      <section class="block reveal" data-delay="2">
+        <h2 class="block__title">학력</h2>
+        <ul class="bullet">
+          <li>(학교명 여기에 추가) 로봇학부 2026학번 · 학번 2026406034</li>
+        </ul>
+      </section>
+
+      <section class="block reveal" data-delay="3">
+        <h2 class="block__title">관심 분야</h2>
+        <ul class="bullet">
+          <li>제어학</li>
+        </ul>
+      </section>
+
+      <section class="block reveal" data-delay="4">
+        <h2 class="block__title">기술 스택</h2>
+
+        <h3 class="sub-title">Language</h3>
+        <ul class="tag-list">
+          <li class="tag">C</li>
+          <li class="tag">C++</li>
+        </ul>
+
+        <h3 class="sub-title">Tools</h3>
+        <ul class="tag-list">
+          <li class="tag">Git / GitHub</li>
+          <li class="tag">VS Code</li>
+        </ul>
+      </section>
+
+    </div>
+
+    <footer class="footer">
+      <small>&copy; <span class="year"></span> 김민찬</small>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
